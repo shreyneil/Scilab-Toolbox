@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry version="5.0-subset Scilab" xml:id="imgaussfilt" xml:lang="en_US"
+					xmlns="http://docbook.org/ns/docbook"
+					xmlns:xlink="http://www.w3.org/1999/xlink"
+					xmlns:svg="http://www.w3.org/2000/svg"
+					xmlns:ns3="http://www.w3.org/1999/xhtml"
+					xmlns:mml="http://www.w3.org/1998/Math/MathML"
+					xmlns:db="http://docbook.org/ns/docbook">
+
+	<refnamediv>
+		<refname>imgaussfilt</refname>
+
+		<refpurpose>Convolve input_image with a 2-D gaussian filter of standard deviation sigma</refpurpose>
+	</refnamediv>
+
+	<refsynopsisdiv>
+		<title>Calling Sequence</title>
+
+<synopsis>      List output_image = imgaussfilt(List Input_Image);
+              List output_image = imgaussfilt(List Input_Image, Int sigma);
+          
+		List output_image = imgaussfilt(List Input_Image,[Int sigma_x, Int sigma_y]);
+	        List output_image = imboxfilt(List Input_Image, Int sigma, padding_type);
+</synopsis>
+
+		
+	</refsynopsisdiv>
+	
+	<refsection>
+   		<title>Arguments</title>
+		<variablelist>
+			<varlistentry><term>Input_Image :</term>
+				<listitem><para>the image matrix on which gaussian filter has to be applied</para></listitem>
+			</varlistentry>
+			<varlistentry><term>sigma :</term>
+				<listitem><para>Standard deviation of the filter - must be a positive scalar >=0 - If not mentioned, default is 0.5</para></listitem>
+			</varlistentry>
+		
+
+
+
+
+
+
+			<varlistentry><term>padding_type</term>
+				<listitem><para>value: 'default' : replicate the border padding, or take the value of the border pixel to be the closest image border pixel</para></listitem>
+<listitem><para>value: 'symmetric' : take the border values to be a reflection of the image</para></listitem>
+<listitem><para>value: 'circular' : take the border values assuming that the image is periodic</para></listitem>
+<listitem><para>value: 'constant' : pad the image with the provided scalar double</para></listitem>
+			</varlistentry>
+		
+			
+		</variablelist>
+	</refsection>
+	
+	<refsection>
+		<title>Description</title>
+		<para>
+			Convolve input_image with a 2-D gaussian filter of standard deviation sigma
+
+		</para>
+	</refsection>
+
+	<refsection>
+		<title>Example</title>
+		<programlisting role="example"><![CDATA[
+							a = imread("lena.jpg");
+							b=imgaussfilt(a);
+							imshow(b);
+   		]]>
+
+<![CDATA[
+							a = imread("lena.jpg");
+							b=imgaussfilt(a,2);
+							imshow(b);
+   		]]>
+
+
+<![CDATA[
+							a = imread("lena.jpg");
+							b=imgaussfilt(a,[2,3]);
+							imshow(b);
+   		]]>
+
+<![CDATA[
+							a = imread("lena.jpg");
+							b=imgaussfilt(a,[2,3],'circular');
+							imshow(b);
+   		]]>
+
+
+
+
+
+
+
+
+
+</programlisting>
+	</refsection>
+
+	<refsection>
+		<title>Authors</title>
+
+		<simplelist type="vert">
+			<member>Samiran Roy</member>
+		</simplelist>
+	</refsection>
+</refentry>
